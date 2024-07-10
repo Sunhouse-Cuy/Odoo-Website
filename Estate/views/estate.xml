@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_estate_kanban" model="ir.ui.view">
+        <field name="name">real.estate.kanban</field>
+        <field name="model">real.estate</field>
+        <field name="arch" type="xml">
+            <kanban default_order="id asc">
+                <field name="name"/>
+                <field name="expected_price"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="image"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                            <div class="o_kanban_image d-none d-md-block"
+                                 t-attf-style="background-image:url('#{kanban_image('real.estate','image',record.id.raw_value,placeholder)}')">
+                            </div>
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        Name:
+                                        <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Expected Price:
+                                        <field name="expected_price"/>
+                                    </li>
+                                    <li>
+                                        Number of Bedrooms:
+                                        <field name="bedrooms"/>
+                                    </li>
+                                    <li>
+                                        Living Area:
+                                        <field name="living_area"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_estate_advertisements_form" model="ir.ui.view">
+        <field name="name">real.estate.form</field>
+        <field name="model">real.estate</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="postcode"/>
+                        <field name="date_availability"/>
+                        <field name="expected_price"/>
+                        <field name="selling_price"/>
+                        <field name="bedrooms"/>
+                        <field name="living_area"/>
+                        <field name="facades"/>
+                        <field name="garage"/>
+                        <field name="garden"/>
+                        <field name="garden_area"/>
+                        <field name="garden_orientation"/>
+                        <field name="buyer"/>
+                        <field name="salesperson"/>
+                        <field name="email"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_estate_advertisements_tree" model="ir.ui.view">
+        <field name="name">real.estate.tree</field>
+        <field name="model">real.estate</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="expected_price"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_estate_advertisements" model="ir.actions.act_window">
+        <field name="name">Estates</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">real.estate</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <menuitem id="menu_estate_advertisements"
+              name="Advertisements"
+              parent="menu_estate_root"
+              action="action_estate_advertisements"
+              sequence="10"/>
+
+
+</odoo>
