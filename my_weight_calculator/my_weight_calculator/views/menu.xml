@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="main_menu_weight_calculator"
+              name="Weight Calculator"
+              sequence="10"/>
+    <menuitem id="menu_weight_calculator"
+              parent="main_menu_weight_calculator"
+              name="Calculators"
+              action="action_weight_calculator"
+              sequence="10"/>
+</odoo>
